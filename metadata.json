@@ -1,0 +1,6 @@
+{
+  "name": "Reflective AI Journal & Mood Tracker",
+  "description": "A private, user-authenticated journaling and mood tracking application powered by Gemini and Firestore with audio voice memos.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

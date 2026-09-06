@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "Interaction": {
+      "title": "Interaction",
+      "description": "A user journal reflection entry with Gemini AI analysis, mood score, and actionable takeaway",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique interaction identifier"
+        },
+        "userId": {
+          "type": "string",
+          "description": "UID of the owner user"
+        },
+        "prompt": {
+          "type": "string",
+          "description": "User journal entry text or transcribed audio memo",
+          "maxLength": 10000
+        },
+        "audioData": {
+          "type": "string",
+          "description": "Optional base64 or metadata of the voice memo",
+          "maxLength": 5000000
+        },
+        "reflection": {
+          "type": "string",
+          "description": "Empathetic conversational reflection from Gemini",
+          "maxLength": 10000
+        },
+        "moodScore": {
+          "type": "number",
+          "description": "Quantified mood rating from 1 to 10"
+        },
+        "moodLabel": {
+          "type": "string",
+          "description": "Descriptive emotion tag (e.g., Grateful, Anxious, Calm, Energized)",
+          "maxLength": 50
+        },
+        "actionableTakeaway": {
+          "type": "string",
+          "description": "Concrete mindful practice or action item for the user",
+          "maxLength": 1000
+        },
+        "tags": {
+          "type": "array",
+          "description": "Key themes identified in the reflection"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO string for creation"
+        }
+      },
+      "required": ["userId", "prompt", "reflection", "moodScore", "actionableTakeaway", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/interactions/{interactionId}": {
+      "schema": "Interaction",
+      "description": "Isolated journal and voice memo interactions for an authenticated user"
+    }
+  }
+}
